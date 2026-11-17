@@ -168,8 +168,11 @@ def main():
     class Popup(QWidget):
         def __init__(self):
             # Not Qt.Popup: Wayland refuses popup grabs from a tray click. Use a plain
-            # frameless window and close it when it loses focus instead.
-            super().__init__(None, Qt.WindowType.Tool | Qt.WindowType.FramelessWindowHint)
+            # frameless window and close it when it loses focus instead. Not Qt.Tool either:
+            # Tool windows are hidden from the task manager, and we want the pinned icon
+            # to light up (like Firefox) while the cheat sheet is open.
+            super().__init__(None, Qt.WindowType.Window | Qt.WindowType.FramelessWindowHint)
+            self.setWindowTitle("NerdrKeys")
             self.setAutoFillBackground(True)
             self.armed = False
             self.scale = min(max(float(settings.value("textScale", 1.0)), 0.8), 1.6)
