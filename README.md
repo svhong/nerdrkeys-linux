@@ -15,6 +15,7 @@ It re-reads `~/.config/herdr/config.toml` (or `$HERDR_CONFIG_PATH`) every time i
 - **TOML** button opens your herdr config
 - **Pin** keeps the window open when it loses focus (Esc closes it)
 - Single instance: launching it again just opens the popup
+- If you've pinned it to the task bar (via `install.sh`), the pinned icon lights up while the popup is open
 
 ## Requirements
 
